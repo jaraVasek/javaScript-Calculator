@@ -109,51 +109,55 @@
     <script>
 
         function getNumbers() {
-            const number1 = Number(document.getElementById("InputID1").value);
-            const number2 = Number(document.getElementById("InputID2").value);
+            let number1 = Number(document.getElementById("InputID1").value);
+            let number2 = Number(document.getElementById("InputID2").value);
 
             if (isNaN(number1) || isNaN(number2)) {
                 document.getElementById("result").innerHTML = "Please enter valid numbers";
                 return null;
             }
 
-            return { number1, number2 };
+            return [number1, number2];
         }
 
         function addNumbers() {
-            const nums = getNumbers();
-            if (!nums) return;
+            let numbers = getNumbers();
+            if (!numbers) return;
 
-            const result = nums.number1 + nums.number2;
-            document.getElementById("result").innerHTML = "Result: " + result;
+            let result = numbers[0] + numbers[1];
+            displayAnswer(result);
         }
 
         function subtractNumbers() {
-            const nums = getNumbers();
-            if (!nums) return;
+            let numbers = getNumbers();
+            if (!numbers) return;
 
-            const result = nums.number1 - nums.number2;
-            document.getElementById("result").innerHTML = "Result: " + result;
+            let result = numbers[0] - numbers[1];
+            displayAnswer(result);
         }
 
         function multiplyNumbers() {
-            const nums = getNumbers();
-            if (!nums) return;
+            let numbers = getNumbers();
+            if (!numbers) return;
 
-            const result = nums.number1 * nums.number2;
-            document.getElementById("result").innerHTML = "Result: " + result;
+            let result = numbers[0] * numbers[1];
+            displayAnswer(result);
         }
 
         function divideNumbers() {
-            const nums = getNumbers();
-            if (!nums) return;
+            let numbers = getNumbers();
+            if (!numbers) return;
 
-            if (nums.number2 === 0) {
+            if (numbers[1] === 0) {
                 document.getElementById("result").innerHTML = "Cannot divide by 0";
                 return;
             }
 
-            const result = nums.number1 / nums.number2;
+            let result = numbers[0] / numbers[1];
+            displayAnswer(result);
+        }
+
+        function displayAnswer(result) {
             document.getElementById("result").innerHTML = "Result: " + result;
         }
 
