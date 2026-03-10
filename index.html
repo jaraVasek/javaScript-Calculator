@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Calculator</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(to right, #e0d91d, #ec9e29);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .calculator {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 1.2);
+            width: 300px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 8px 0;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        button {
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .add {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .subtract {
+            background: #ff9800;
+            color: white;
+        }
+
+        .multiply {
+            background: #2196F3;
+            color: white;
+        }
+
+        .divide {
+            background: #f44336;
+            color: white;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="calculator">
+
+        <h2>JavaScript Calculator</h2>
+
+        <input type="text" id="InputID1" placeholder="Enter first number">
+        <input type="text" id="InputID2" placeholder="Enter second number">
+
+        <div class="buttons">
+            <button class="add" onclick="addNumbers()">Add</button>
+            <button class="subtract" onclick="subtractNumbers()">Subtract</button>
+            <button class="multiply" onclick="multiplyNumbers()">Multiply</button>
+            <button class="divide" onclick="divideNumbers()">Divide</button>
+        </div>
+
+        <p id="result"></p>
+
+    </div>
+
+    <script>
+
+        function getNumbers() {
+            const number1 = Number(document.getElementById("InputID1").value);
+            const number2 = Number(document.getElementById("InputID2").value);
+
+            if (isNaN(number1) || isNaN(number2)) {
+                document.getElementById("result").innerHTML = "Please enter valid numbers";
+                return null;
+            }
+
+            return { number1, number2 };
+        }
+
+        function addNumbers() {
+            const nums = getNumbers();
+            if (!nums) return;
+
+            const result = nums.number1 + nums.number2;
+            document.getElementById("result").innerHTML = "Result: " + result;
+        }
+
+        function subtractNumbers() {
+            const nums = getNumbers();
+            if (!nums) return;
+
+            const result = nums.number1 - nums.number2;
+            document.getElementById("result").innerHTML = "Result: " + result;
+        }
+
+        function multiplyNumbers() {
+            const nums = getNumbers();
+            if (!nums) return;
+
+            const result = nums.number1 * nums.number2;
+            document.getElementById("result").innerHTML = "Result: " + result;
+        }
+
+        function divideNumbers() {
+            const nums = getNumbers();
+            if (!nums) return;
+
+            if (nums.number2 === 0) {
+                document.getElementById("result").innerHTML = "Cannot divide by 0";
+                return;
+            }
+
+            const result = nums.number1 / nums.number2;
+            document.getElementById("result").innerHTML = "Result: " + result;
+        }
+
+    </script>
+
+</body>
+
+</html>
